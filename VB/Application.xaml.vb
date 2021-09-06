@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Configuration
 Imports System.Data
@@ -14,6 +13,7 @@ Namespace RealTimeSourceExample
 	''' </summary>
 	Partial Public Class App
 		Inherits Application
+
 		Public Sub New()
 
 		End Sub

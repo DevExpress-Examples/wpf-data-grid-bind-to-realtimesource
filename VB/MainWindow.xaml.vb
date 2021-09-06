@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Windows
@@ -14,6 +13,7 @@ Imports System.ComponentModel
 Namespace RealTimeSourceExample
 	Partial Public Class MainWindow
 		Inherits Window
+
 		Private Persons As ObservableCollection(Of Data)
 		Private Count As Integer = 50
 		Private Random As New Random()
@@ -21,7 +21,11 @@ Namespace RealTimeSourceExample
 			InitializeComponent()
 			Persons = New ObservableCollection(Of Data)()
 			For i As Integer = 0 To Count - 1
-				Persons.Add(New Data With {.Id = i, .Text = "Text" & i, .Progress = GetNumber()})
+				Persons.Add(New Data With {
+					.Id = i,
+					.Text = "Text" & i,
+					.Progress = GetNumber()
+				})
 			Next i
 
 			grid.ItemsSource = New RealTimeSource() With {.DataSource = Persons}
@@ -44,6 +48,7 @@ Namespace RealTimeSourceExample
 	End Class
 	Public Class Data
 		Implements INotifyPropertyChanged
+
 		Private _Id As Integer
 		Public _Text As String
 		Public _Progress As Double
@@ -76,7 +81,7 @@ Namespace RealTimeSourceExample
 			End Set
 		End Property
 
-		Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
+		Public Event PropertyChanged As PropertyChangedEventHandler
 		Private Sub NotifyPropertyChanged(ByVal name As String)
 			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(name))
 		End Sub
